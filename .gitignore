@@ -1,4 +1,8 @@
 node_modules
 public
 dist
-config.bat
+.env
+.env.*
+!.env.example
+
+PROJECT.md
