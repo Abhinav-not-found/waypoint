@@ -19,11 +19,10 @@ Built to support structured workflows and growing teams, Waypoint aims to simpli
 
 ## Frontend
 
-- Nextjs + Typescript
+- Reactjs + Typescript
 - Tailwindcss + Shadcn/ui
 - TanStack Query + Zustand
 - React Hook Form + Zod
-- Fumadocs
 
 ## Backend
 
@@ -35,8 +34,7 @@ Built to support structured workflows and growing teams, Waypoint aims to simpli
 
 ## Database
 
-- Postgresql
-- Prisma
+- Mongodb
 
 ## Infrastructure
 
@@ -90,7 +88,7 @@ Built to support structured workflows and growing teams, Waypoint aims to simpli
 ```
 
 - **.vscode/** = VS-Code related settings
-- **client/** = Nextjs frontend application
+- **client/** = Reactjs frontend application
 - **server/** = Node Express backend application
 - **documentation/** = All the developer documentations
 
