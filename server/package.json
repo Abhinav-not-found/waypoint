@@ -9,7 +9,7 @@
     "build": "tsc",
     "start": "npm run build && node dist/server.js",
     "generate:openapi": "tsx src/scripts/generate-openapi.ts",
-    "generate:client": "npm run generate:openapi && openapi --input src/generated/openapi.json --output ../client/src/api --client axios"
+    "generate:client": "npm run generate:openapi && openapi --input generated/openapi.json --output ../client/src/shared/api --client axios"
   },
   "keywords": [],
   "type": "module",
