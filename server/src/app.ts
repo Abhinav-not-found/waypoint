@@ -15,7 +15,7 @@ function createApp() {
   app.use('/api', indexRouter);
   app.get('/api/test', (req, res) => {
     res.json({
-      message: 'this is a message from server',
+      message: 'this is a message from server, this is testing',
     });
   });
 
