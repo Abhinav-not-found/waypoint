@@ -1,8 +1,14 @@
-node_modules
-public
-dist
+node_modules/
+**/node_modules/
+
+server/dist/
+server/public/
+
 .env
 .env.*
-!.env.example
+**/.env
+**/.env.*
+
+.DS_Store
 
 PROJECT.md

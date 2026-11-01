@@ -7,10 +7,16 @@ class ImageKitStorage implements StorageProvider {
   private readonly client: ImageKit;
 
   constructor() {
+    const { IMAGEKIT_PUBLIC_KEY, IMAGEKIT_PRIVATE_KEY, IMAGEKIT_URL_ENDPOINT } = env;
+
+    if (!IMAGEKIT_PUBLIC_KEY || !IMAGEKIT_PRIVATE_KEY || !IMAGEKIT_URL_ENDPOINT) {
+      throw new Error('ImageKit environment variables are missing');
+    }
+
     this.client = new ImageKit({
-      publicKey: env.IMAGEKIT_PUBLIC_KEY,
-      privateKey: env.IMAGEKIT_PRIVATE_KEY,
-      urlEndpoint: env.IMAGEKIT_URL_ENDPOINT,
+      publicKey: IMAGEKIT_PUBLIC_KEY,
+      privateKey: IMAGEKIT_PRIVATE_KEY,
+      urlEndpoint: IMAGEKIT_URL_ENDPOINT,
     });
   }
 

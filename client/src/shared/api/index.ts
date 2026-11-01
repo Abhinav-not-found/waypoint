@@ -7,7 +7,7 @@ export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
 export type { OpenAPIConfig } from './core/OpenAPI';
 
-export type { ApiError } from './models/ApiError';
+export type { ApiError as ApiErrorModel } from './models/ApiError';
 export type { AuthResponse } from './models/AuthResponse';
 export type { LoginRequest } from './models/LoginRequest';
 export type { RefreshTokenResponse } from './models/RefreshTokenResponse';
