@@ -22,6 +22,7 @@ const LandingPage = () => {
       LandingPage
       <p>{data}</p>
       <p>This is testing in frontend2</p>
+      <p>This is testing in frontend3</p>
     </div>
   )
 }
