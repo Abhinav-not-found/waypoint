@@ -14,7 +14,9 @@ async function startServer() {
     // const server = createSocketServer(app);
 
     app.listen(env.PORT, () => {
-      logger.info(colorText(`Server started on port:${env.PORT}`, 'black', 'cyan'));
+      logger.info({
+        msg: `Server started on port: ${env.PORT}`,
+      });
     });
   } catch (error) {
     logger.error(`Server startup failed: ${error}`);
