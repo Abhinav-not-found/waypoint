@@ -5,8 +5,11 @@ import { AuthService } from '@/shared/api/services/AuthService';
 import { ApiError, type AuthResponse } from '@/shared/api';
 import { toast } from 'sonner';
 import { loginSchema, type LoginFormValues } from '@/features/auth/types/login.types';
+import { useNavigate } from 'react-router';
 
 const useLogin = () => {
+  const navigate = useNavigate();
+
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -21,7 +24,9 @@ const useLogin = () => {
     },
     onSuccess: (data) => {
       // console.log('Login successful:', data);
+      form.reset();
       toast.success(data.message);
+      navigate('/home');
     },
     onError: (error) => {
       console.log(error);

@@ -5,8 +5,11 @@ import { useMutation } from '@tanstack/react-query';
 import { AuthService } from '@/shared/api/services/AuthService';
 import { ApiError, type AuthResponse } from '@/shared/api';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router';
 
 const useRegister = () => {
+  const navigate = useNavigate()
+
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -22,7 +25,9 @@ const useRegister = () => {
     },
     onSuccess: (data) => {
       // console.log('Registration successful:', data);
+      form.reset()
       toast.success(data.message);
+      navigate('/home')
     },
     onError: (error) => {
       console.log(error);
