@@ -20,7 +20,10 @@ export type OpenAPIConfig = {
 };
 
 export const OpenAPI: OpenAPIConfig = {
-    BASE: 'http://localhost:3000/api',
+    BASE: import.meta.env.DEV
+    ? 'http://localhost:3000/api'
+    : '/api',
+
     VERSION: '1.0.0',
     WITH_CREDENTIALS: true,
     CREDENTIALS: 'include',
