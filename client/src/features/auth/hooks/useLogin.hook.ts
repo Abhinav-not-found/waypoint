@@ -32,7 +32,7 @@ const useLogin = () => {
       setUser(response.data.user);
 
       toast.success(response.message);
-      navigate('/home');
+      navigate('/home', { replace: true });
     },
     onError: (error) => {
       console.log(error);

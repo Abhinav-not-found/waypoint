@@ -6,9 +6,11 @@ import { AuthService } from '@/shared/api/services/AuthService';
 import { ApiError, type AuthResponse } from '@/shared/api';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router';
+import { useAuthStore } from '@/features/auth/store/auth.store';
 
 const useRegister = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const setUser = useAuthStore((state) => state.setUser);
 
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
@@ -23,11 +25,14 @@ const useRegister = () => {
     mutationFn: (data: RegisterFormValues) => {
       return AuthService.postAuthRegister(data);
     },
-    onSuccess: (data) => {
-      // console.log('Registration successful:', data);
-      form.reset()
-      toast.success(data.message);
-      navigate('/home')
+    onSuccess: (response) => {
+      // console.log('Registration successful:', response);
+      form.reset();
+
+      setUser(response.data.user);
+
+      toast.success(response.message);
+      navigate('/home', { replace: true });
     },
     onError: (error) => {
       console.log(error);
