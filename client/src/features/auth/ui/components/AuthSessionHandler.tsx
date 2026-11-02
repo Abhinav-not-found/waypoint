@@ -9,7 +9,7 @@ const AuthSessionHandler = () => {
     useEffect(() => {
         const handleSessionExpired = () => {
             clearAuth();
-            navigate('/login', { replace: true });
+            // navigate('/login', { replace: true });
         };
 
         window.addEventListener('auth:session-expired', handleSessionExpired);

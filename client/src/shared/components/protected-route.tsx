@@ -9,7 +9,7 @@ const ProtectedRoute = () => {
   }
 
   if (status === 'unauthenticated') {
-    return <Navigate to="/login" replace />
+    return <Navigate to="/" replace />
   }
 
   return <Outlet />
