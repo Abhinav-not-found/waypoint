@@ -5,6 +5,7 @@ const LandingPage = () => {
     <main className="w-full">
       <Navbar />
       LandingPage
+      Hello from rajat
     </main>
   )
 }
