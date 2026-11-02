@@ -1,5 +1,6 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import env from '@/shared/config/env.config.js';
+import path from 'node:path';
 
 const swaggerSpec = swaggerJsdoc({
   definition: {
@@ -207,7 +208,10 @@ const swaggerSpec = swaggerJsdoc({
     },
   },
 
-  apis: ['./src/module/**/*.ts'],
+  apis: [
+    path.join(process.cwd(), 'src/module/**/*.ts'),
+    path.join(process.cwd(), 'dist/module/**/*.js'),
+  ],
 });
 
 export default swaggerSpec;
