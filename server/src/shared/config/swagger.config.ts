@@ -13,7 +13,7 @@ const swaggerSpec = swaggerJsdoc({
 
     servers: [
       {
-        url: '/api',
+        url: process.env.API_BASE_URL || 'http://localhost:3000/api',
         description: env.IS_PROD ? 'Production server' : 'Development server',
       },
     ],
