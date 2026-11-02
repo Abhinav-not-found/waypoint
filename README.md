@@ -28,7 +28,7 @@ Built to support structured workflows and growing teams, Waypoint aims to simpli
 
 - Node.js + Express5
 - Typescript + Zod
-- OpenApi spec documentation
+- OpenApi spec documentation + Scalar docs
 - Redis + BullMQ
 - Socket.io
 
