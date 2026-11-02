@@ -8,14 +8,16 @@ const cookie: {
   accessTokenOpts: {
     httpOnly: true,
     secure: env.IS_PROD,
-    sameSite: 'strict',
-    maxAge: env.IS_PROD ? 1000 * 60 * 5 : 1000 * 5,
+    sameSite: env.IS_PROD ? 'strict' : 'lax',
+    path: '/',
+    maxAge: env.IS_PROD ? 1000 * 60 * 5 : 1000 * 60 * 5,
   },
   refreshTokenOpts: {
     httpOnly: true,
     secure: env.IS_PROD,
-    sameSite: 'strict',
-    maxAge: env.IS_PROD ? 1000 * 60 * 60 * 24 : 1000 * 60 * 60,
+    sameSite: env.IS_PROD ? 'strict' : 'lax',
+    path: '/',
+    maxAge: env.IS_PROD ? 1000 * 60 * 60 : 1000 * 60 * 60,
   },
 };
 

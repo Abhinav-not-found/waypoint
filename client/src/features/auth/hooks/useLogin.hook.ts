@@ -6,9 +6,11 @@ import { ApiError, type AuthResponse } from '@/shared/api';
 import { toast } from 'sonner';
 import { loginSchema, type LoginFormValues } from '@/features/auth/types/login.types';
 import { useNavigate } from 'react-router';
+import { useAuthStore } from '@/features/auth/store/auth.store';
 
 const useLogin = () => {
   const navigate = useNavigate();
+  const setUser = useAuthStore((state) => state.setUser);
 
   const form = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
@@ -22,10 +24,14 @@ const useLogin = () => {
     mutationFn: (data: LoginFormValues) => {
       return AuthService.postAuthLogin(data);
     },
-    onSuccess: (data) => {
-      // console.log('Login successful:', data);
+    onSuccess: (response) => {
+      console.log('Login successful:', response);
+
       form.reset();
-      toast.success(data.message);
+
+      setUser(response.data.user);
+
+      toast.success(response.message);
       navigate('/home');
     },
     onError: (error) => {
