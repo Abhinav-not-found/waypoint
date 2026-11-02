@@ -1,18 +1,20 @@
 import swaggerJsdoc from 'swagger-jsdoc';
+import env from '@/shared/config/env.config.js';
 
 const swaggerSpec = swaggerJsdoc({
   definition: {
     openapi: '3.1.0',
 
     info: {
-      title: 'My API',
+      title: 'Waypoint API',
       version: '1.0.0',
-      description: 'API documentation',
+      description: 'API documentation for Waypoint',
     },
 
     servers: [
       {
-        url: 'http://localhost:3000/api',
+        url: '/api',
+        description: env.IS_PROD ? 'Production server' : 'Development server',
       },
     ],
 
