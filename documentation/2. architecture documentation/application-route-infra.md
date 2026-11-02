@@ -3,7 +3,7 @@
 - / - Marketing (landing page)
 - /sitemap.xml - SEO sitemap [Learn more](#sitemapxml)
 - /robots.txt - Search engine crawling rules
-- /docs - Fumadocs – product documentation
+<!-- - /docs - Fumadocs – product documentation -->
 - /\* - pages
 
 - /api/docs - scalar api documentation ui

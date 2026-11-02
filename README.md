@@ -1,4 +1,4 @@
-# waypoint
+# Waypoint
 
 ## One workspace. Every team. Every milestone.
 
@@ -36,7 +36,7 @@ Built to support structured workflows and growing teams, Waypoint aims to simpli
 
 - Mongodb
 
-## Infrastructure
+## Deployment
 
 - Docker
 - Github Actions
@@ -56,7 +56,7 @@ Built to support structured workflows and growing teams, Waypoint aims to simpli
 [data-flow] - complete detailed explanation of data flowing from client -> server/api -> database
 [authentication] - auth explained (Login, registration, sessions, tokens and authorization).
 [database] - database explained (schema, model, relations etc with flow charts)
-[deployment] - explain the deployement process after pr merge to main, and ci-cd pipeline
+[deployment] - explain the deployment process after pr merge to main, and ci-cd pipeline
 
 ## Development guidelines
 
@@ -76,17 +76,22 @@ Built to support structured workflows and growing teams, Waypoint aims to simpli
 
 ```
 .
+├── .github/
 ├── .vscode/
 ├── client/
 ├── documentation/
+├── scripts/
 ├── server/
+├──  .dockerignore
 ├──  .gitignore
 ├──  .prettierignore
 ├──  .prettierrc
+├──   dockerfile
 ├──   eslint.config.js
 └──   README.md
 ```
 
+- **.github/** = Automated deployment workflow
 - **.vscode/** = VS-Code related settings
 - **client/** = Reactjs frontend application
 - **server/** = Node Express backend application
@@ -94,10 +99,34 @@ Built to support structured workflows and growing teams, Waypoint aims to simpli
 
 # Application URLs
 
+### Development
+
 - Web application : http://localhost:3000
 - Backend API : http://localhost:8000
-- Product documentation (fumadocs) : http://localhost:3000/docs
 - API documentation (scalar) : http://localhost:5000/api/docs
+
+### Production
+
+- Web application : https://waypoint-1dk5.onrender.com
+- Backend API : https://waypoint-1dk5.onrender.com/api
+- API documentation (scalar) :https://waypoint-1dk5.onrender.com/api/docs
+
+# Docs
+
+There are 2 types of docs in the project
+
+1. Developer docs : All the manual development related docs are in `documentation` folder.<br>
+   Visit [`(root)/documentation`](./documentation)
+2. Api docs : All the api related docs (Scalar) are in `server` folder.<br>
+   Visit [`backend_url/api/docs`](http://localhost:8000/api/docs)
+
+# Automated deployment
+
+- Push on main branch
+- github actions will run
+- creates a docker image
+- puts the image into Github Container Registry (GHCR)
+- render pulls that image and creates new deployment automatically
 
 # Contributions
 
@@ -112,14 +141,3 @@ Contributions are welcome.
 7. Submit a pull request.
 
 Please read our contribution guidelines before submitting a PR.
-
-# Docs
-
-There are 3 types of docs in the project
-
-1. Developer docs : All the manual development related docs are in `documentation` folder.<br>
-   Visit [`(root)/documentation`](./documentation)
-2. Product docs : All the product/website related docs (Fumadocs) are in `client` folder.<br>
-   Visit [`frontend_url/docs`](http://localhost:3000/docs)
-3. Api docs : All the api related docs (Scalar) are in `server` folder.<br>
-   Visit [`backend_url/api/docs`](http://localhost:8000/api/docs)
