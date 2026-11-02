@@ -8,7 +8,7 @@ import cors from 'cors';
 const appMiddleware = (app: Application) => {
   app.use(
     cors({
-      origin: 'http://localhost:5173',
+      origin: 'http://localhost:5173,https://waypoint-1dk5.onrender.com/register',
       credentials: true,
     }),
   );
