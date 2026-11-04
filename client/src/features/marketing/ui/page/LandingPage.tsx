@@ -1,12 +1,9 @@
-import Navbar from "@/shared/components/navbar";
+import HeroSection from "@/features/marketing/ui/sections/HeroSection";
 
 const LandingPage = () => {
   return (
     <main className="w-full">
-      <Navbar />
-      LandingPage
-      Hello from rajat
-      vps testing 1
+      <HeroSection />
     </main>
   )
 }
