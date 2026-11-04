@@ -12,6 +12,12 @@ const envSchema = z.object({
   JWT_SECRET_ACCESS: z.string().min(1, 'JWT_SECRET_ACCESS is required'),
   JWT_SECRET_REFRESH: z.string().min(1, 'JWT_SECRET_REFRESH is required'),
   CLIENT_URL: z.string().url('CLIENT_URL must be a valid URL'),
+
+  COOKIE_SECURE: z
+    .enum(['true', 'false'])
+    .default('true')
+    .transform((value) => value === 'true'),
+
   // Optional integration
   IMAGEKIT_PUBLIC_KEY: z.string().trim().optional(),
   IMAGEKIT_PRIVATE_KEY: z.string().trim().optional(),
