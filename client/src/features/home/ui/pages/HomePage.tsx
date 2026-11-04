@@ -1,10 +1,9 @@
-import Navbar from "@/shared/components/navbar"
 
-const HomePage = () => {
+const HomePage = ({ }) => {
   return (
-    <main>
-      <Navbar />
-    </main>
+    <div className="p-4">
+      test
+    </div>
   )
 }
 

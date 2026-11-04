@@ -3,9 +3,13 @@
 - All folders names will be in lower-case.
   ex: hooks/, components/, etc
 
-- Pages will have "page" in their file name and component name
+- Pages will have "page" in their file name and component name.
   ex: <HomePage>, <LandingPage>, etc
   ex: const LoginPage = () => {}
+
+- Sections will have "section" in their filename and component name.
+  ex: <HeroSection>, <PricingSection>, etc
+  ex: const HeroSection = () => {}
 
 - Reusable components will be in Kabab-case.(Inside shared/components folder)
   ex: mode-toggle.tsx, theme-provider.tsx

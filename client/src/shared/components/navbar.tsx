@@ -11,13 +11,12 @@ const Navbar = () => {
   return (
     <header className="flex items-center justify-between px-10 w-full h-14">
       <Logo />
-      <div className="flex gap-2">
+      <div className="flex gap-2 items-center">
         <ModeToggle />
         {status === 'authenticated' ?
           <LogoutBtn /> :
           <LoginBtn />
         }
-
       </div>
     </header>
   )

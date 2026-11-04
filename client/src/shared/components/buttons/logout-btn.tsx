@@ -5,7 +5,7 @@ const LogoutBtn = () => {
   const { handleLogout } = useLogout()
 
   return (
-    <Button variant={'link'} onClick={handleLogout}>Logout</Button>
+    <Button variant={'link'} onClick={handleLogout} className={'text-black dark:text-white'}>Logout</Button>
   )
 }
 
