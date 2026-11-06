@@ -14,6 +14,10 @@ Built to support structured workflows and growing teams, Waypoint aims to simpli
 
 - [Tech stack](#tech-stack)
 - [Project structure](#project-structure)
+- [Application Urls](#application-urls)
+- [Docs](#docs)
+- [Automated deployment](#automated-deployment)
+- [Contribution](#contributions)
 
 # Tech stack
 
@@ -40,37 +44,10 @@ Built to support structured workflows and growing teams, Waypoint aims to simpli
 
 - Docker
 - Github Actions
+- Render
+- VPS
 
 <!-- [Application setup](./documentation/SETUP.md#application-setup) -->
-
-### Getting started
-
-[Application setup] - local setup + docker setup
-[Environment variables]
-[Dependencies] - all the packages in frontend and backend
-
-### Architecture documentation
-
-[architecture] - Overall application architecture, small working flow chart example, website working example etc
-[folder-structure] - explanation of folders and files
-[data-flow] - complete detailed explanation of data flowing from client -> server/api -> database
-[authentication] - auth explained (Login, registration, sessions, tokens and authorization).
-[database] - database explained (schema, model, relations etc with flow charts)
-[deployment] - explain the deployment process after pr merge to main, and ci-cd pipeline
-
-## Development guidelines
-
-[development-flow] - Frontend and backend development processes
-[coding-standards] - Naming conventions, file organization and coding practices.
-[git-workflow] - Branching, commits, pull requests and merging.
-[pr-template] - Pull request template.
-
-## backend documentation
-
-[backend-overview] - Backend architecture and available modules.
-[file-overview] - what each file does and how to use it.
-[api-conventions] - Request/response structure, status codes and error handling.
-[api-authentication] — How protected endpoints work.
 
 # Project Structure
 
@@ -119,6 +96,42 @@ There are 2 types of docs in the project
    Visit [`(root)/documentation`](./documentation)
 2. Api docs : All the api related docs (Scalar) are in `server` folder.<br>
    Visit [`backend_url/api/docs`](http://localhost:8000/api/docs)
+
+## Developer Documentations
+
+### 1) Getting started
+
+- [Application setup] - local setup + docker setup
+- [Environment variables - configure .env](./documentation/1.%20getting%20started/environment.md)
+- [Dependencies - all the packages in this project](./documentation/1.%20getting%20started/dependency.md)
+
+### 2) Architecture documentation
+
+- [architecture] - Overall application architecture, small working flow chart example, website working example etc
+- [app-route infrastructure](./documentation/2.%20architecture%20documentation/application-route-infra.md)
+- [folder-structure] - explanation of folders and files
+- [data-flow] - complete detailed explanation of data flowing from client -> server/api -> database
+- [authentication] - auth explained (Login, registration, sessions, tokens and authorization).
+- [database] - database explained (schema, model, relations etc with flow charts)
+- [deployment] - explain the deployment process after pr merge to main, and ci-cd pipeline
+
+### 3) Development guidelines
+
+- [development-flow] - Frontend and backend development processes
+- [coding-standards] - Naming conventions, file organization and coding practices.
+- [git-workflow] - Branching, commits, pull requests and merging.
+- [pr-template] - Pull request template.
+
+### 4) Backend documentation
+
+- [backend-overview] - Backend architecture and available modules.
+- [file-overview] - what each file does and how to use it.
+- [api-conventions] - Request/response structure, status codes and error handling.
+- [api-authentication] — How protected endpoints work.
+
+### 5) Contributions documentation
+
+### 6) ADR documentation
 
 # Automated deployment
 
