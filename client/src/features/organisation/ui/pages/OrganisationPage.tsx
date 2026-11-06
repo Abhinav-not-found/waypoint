@@ -9,7 +9,6 @@ import useOrganisation from '@/features/organisation/hooks/useOrganisation.hook'
 import CreateOrganisationForm from '@/features/organisation/ui/components/OrganisationForm';
 import OrganisationList from '@/features/organisation/ui/components/OrganisationList';
 import DeleteOrganisationDialog from '@/features/organisation/ui/components/DeleteOrganisationDialog';
-import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '@/shared/components/ui/alert-dialog';
 import OrganisationHeader from '@/features/organisation/ui/components/OrganisationHeader';
 
 const OrganisationPage = () => {
