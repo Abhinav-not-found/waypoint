@@ -24,6 +24,10 @@ const swaggerSpec = swaggerJsdoc({
         name: 'Authentication',
         description: 'Authentication related APIs',
       },
+      {
+        name: 'Organisations',
+        description: 'Organisation creation, retrieval, management and deletion APIs',
+      },
     ],
     components: {
       securitySchemes: {
@@ -201,6 +205,143 @@ const swaggerSpec = swaggerJsdoc({
               items: {
                 type: 'string',
               },
+            },
+          },
+        },
+
+        Organisation: {
+          type: 'object',
+          required: ['_id', 'name', 'slug', 'description', 'createdBy'],
+          properties: {
+            _id: {
+              type: 'string',
+              example: '6a8f0bbc7b147839f36243f4',
+            },
+            name: {
+              type: 'string',
+              example: 'Acme Technologies',
+            },
+            slug: {
+              type: 'string',
+              example: 'acme-technologies',
+            },
+            description: {
+              type: 'string',
+              example: 'A software development company',
+            },
+            logo: {
+              type: 'string',
+              nullable: true,
+              example: null,
+            },
+            createdBy: {
+              type: 'string',
+              example: '6a8f0bbc7b147839f36243f4',
+            },
+            isDeleted: {
+              type: 'boolean',
+              example: false,
+            },
+            createdAt: {
+              type: 'string',
+              format: 'date-time',
+            },
+            updatedAt: {
+              type: 'string',
+              format: 'date-time',
+            },
+          },
+        },
+
+        CreateOrganisationRequest: {
+          type: 'object',
+          required: ['name'],
+          properties: {
+            name: {
+              type: 'string',
+              minLength: 2,
+              maxLength: 100,
+              example: 'Acme Technologies',
+            },
+            description: {
+              type: 'string',
+              maxLength: 500,
+              example: 'A software development company',
+            },
+            logo: {
+              type: 'string',
+              format: 'uri',
+              example: 'https://example.com/logo.png',
+            },
+          },
+        },
+
+        UpdateOrganisationRequest: {
+          type: 'object',
+          minProperties: 1,
+          properties: {
+            name: {
+              type: 'string',
+              minLength: 2,
+              maxLength: 100,
+              example: 'Acme Technologies',
+            },
+            description: {
+              type: 'string',
+              maxLength: 500,
+              example: 'An updated organisation description',
+            },
+            logo: {
+              type: 'string',
+              format: 'uri',
+              example: 'https://example.com/new-logo.png',
+            },
+          },
+        },
+
+        OrganisationResponse: {
+          type: 'object',
+          required: ['statusCode', 'message', 'data', 'success'],
+          properties: {
+            statusCode: {
+              type: 'integer',
+              example: 201,
+            },
+            message: {
+              type: 'string',
+              example: 'New organisation created',
+            },
+            data: {
+              $ref: '#/components/schemas/Organisation',
+            },
+            success: {
+              type: 'boolean',
+              example: true,
+            },
+          },
+        },
+
+        OrganisationsResponse: {
+          type: 'object',
+          required: ['statusCode', 'message', 'data', 'success'],
+          properties: {
+            statusCode: {
+              type: 'integer',
+              example: 200,
+            },
+            message: {
+              type: 'string',
+              example: 'Fetched all organisations',
+            },
+            data: {
+              type: 'array',
+              items: {
+                $ref: '#/components/schemas/Organisation',
+              },
+            },
+            success: {
+              type: 'boolean',
+              example: true,
             },
           },
         },

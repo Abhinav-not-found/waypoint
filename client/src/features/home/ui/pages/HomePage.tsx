@@ -1,10 +1,12 @@
+import OrganisationPage from '@/features/organisation/ui/pages/OrganisationPage';
 
-const HomePage = ({ }) => {
+const HomePage = () => {
+
   return (
-    <div className="p-4">
-      test
-    </div>
-  )
-}
+    <main className="p-6">
+      <OrganisationPage />
+    </main>
+  );
+};
 
-export default HomePage
+export default HomePage;

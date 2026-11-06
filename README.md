@@ -118,7 +118,7 @@ There are 2 types of docs in the project
 ### 3) Development guidelines
 
 - [development-flow] - Frontend and backend development processes
-- [coding-standards] - Naming conventions, file organization and coding practices.
+- [coding-standards - Naming conventions, file organization and coding practices](./documentation/3.%20development%20guidelines/coding-standards.md)
 - [git-workflow] - Branching, commits, pull requests and merging.
 - [pr-template] - Pull request template.
 
@@ -132,6 +132,8 @@ There are 2 types of docs in the project
 ### 5) Contributions documentation
 
 ### 6) ADR documentation
+
+- [Architecture decision records](./documentation/6.%20adr/000-adr.md)
 
 # Automated deployment
 

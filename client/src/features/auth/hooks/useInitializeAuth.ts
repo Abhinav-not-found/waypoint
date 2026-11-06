@@ -1,27 +1,25 @@
-import { useEffect } from 'react'
-import { AuthService } from '@/shared/api/services/AuthService'
-import { useAuthStore } from '@/features/auth/store/auth.store'
+import { useEffect } from 'react';
+import { AuthService } from '@/shared/api/services/AuthService';
+import { useAuthStore } from '@/features/auth/store/auth.store';
 
 const AuthInitializer = () => {
-  const setUser = useAuthStore((state) => state.setUser)
-  const clearAuth = useAuthStore((state) => state.clearAuth)
+  const setUser = useAuthStore((state) => state.setUser);
+  const clearAuth = useAuthStore((state) => state.clearAuth);
 
   useEffect(() => {
     const initializeAuth = async () => {
       try {
-        // Replace with the actual generated method for GET /auth/me.
-        const response = await AuthService.getAuthMe()
-        // console.log(response)
-        setUser(response.data)
+        const response = await AuthService.getAuthMe();
+        setUser(response.data);
       } catch {
-        clearAuth()
+        clearAuth();
       }
-    }
+    };
 
-    initializeAuth()
-  }, [setUser, clearAuth])
+    initializeAuth();
+  }, [setUser, clearAuth]);
 
-  return null
-}
+  return null;
+};
 
-export default AuthInitializer
+export default AuthInitializer;

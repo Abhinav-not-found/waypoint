@@ -1,19 +1,24 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "My API",
+    "title": "Waypoint API",
     "version": "1.0.0",
-    "description": "API documentation"
+    "description": "API documentation for Waypoint"
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api"
+      "url": "http://localhost:3000/api",
+      "description": "Development server"
     }
   ],
   "tags": [
     {
       "name": "Authentication",
       "description": "Authentication related APIs"
+    },
+    {
+      "name": "Organisations",
+      "description": "Organisation creation, retrieval, management and deletion APIs"
     }
   ],
   "components": {
@@ -217,10 +222,388 @@
             }
           }
         }
+      },
+      "Organisation": {
+        "type": "object",
+        "required": [
+          "_id",
+          "name",
+          "slug",
+          "description",
+          "createdBy"
+        ],
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "6a8f0bbc7b147839f36243f4"
+          },
+          "name": {
+            "type": "string",
+            "example": "Acme Technologies"
+          },
+          "slug": {
+            "type": "string",
+            "example": "acme-technologies"
+          },
+          "description": {
+            "type": "string",
+            "example": "A software development company"
+          },
+          "logo": {
+            "type": "string",
+            "nullable": true,
+            "example": null
+          },
+          "createdBy": {
+            "type": "string",
+            "example": "6a8f0bbc7b147839f36243f4"
+          },
+          "isDeleted": {
+            "type": "boolean",
+            "example": false
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "CreateOrganisationRequest": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100,
+            "example": "Acme Technologies"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500,
+            "example": "A software development company"
+          },
+          "logo": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://example.com/logo.png"
+          }
+        }
+      },
+      "UpdateOrganisationRequest": {
+        "type": "object",
+        "minProperties": 1,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100,
+            "example": "Acme Technologies"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 500,
+            "example": "An updated organisation description"
+          },
+          "logo": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://example.com/new-logo.png"
+          }
+        }
+      },
+      "OrganisationResponse": {
+        "type": "object",
+        "required": [
+          "statusCode",
+          "message",
+          "data",
+          "success"
+        ],
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "example": 201
+          },
+          "message": {
+            "type": "string",
+            "example": "New organisation created"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Organisation"
+          },
+          "success": {
+            "type": "boolean",
+            "example": true
+          }
+        }
+      },
+      "OrganisationsResponse": {
+        "type": "object",
+        "required": [
+          "statusCode",
+          "message",
+          "data",
+          "success"
+        ],
+        "properties": {
+          "statusCode": {
+            "type": "integer",
+            "example": 200
+          },
+          "message": {
+            "type": "string",
+            "example": "Fetched all organisations"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Organisation"
+            }
+          },
+          "success": {
+            "type": "boolean",
+            "example": true
+          }
+        }
       }
     }
   },
   "paths": {
+    "/organisations": {
+      "post": {
+        "tags": [
+          "Organisations"
+        ],
+        "summary": "Create an organisation",
+        "description": "Creates a new organisation for the authenticated user.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateOrganisationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Organisation created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "409": {
+            "description": "Organisation conflict"
+          }
+        }
+      }
+    },
+    "/organisations/all": {
+      "get": {
+        "tags": [
+          "Organisations"
+        ],
+        "summary": "Fetch all organisations",
+        "description": "Retrieves all non-deleted organisations. Requires authentication.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Organisations fetched successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required"
+          }
+        }
+      }
+    },
+    "/organisations/my": {
+      "get": {
+        "tags": [
+          "Organisations"
+        ],
+        "summary": "Fetch user's organisations",
+        "description": "Retrieves non-deleted organisations associated with the authenticated user.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User organisations fetched successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationsResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required"
+          }
+        }
+      }
+    },
+    "/organisations/{organisationId}": {
+      "patch": {
+        "tags": [
+          "Organisations"
+        ],
+        "summary": "Update an organisation",
+        "description": "Updates the provided fields of an existing organisation.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organisationId",
+            "required": true,
+            "description": "MongoDB ID of the organisation",
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-fA-F0-9]{24}$"
+            },
+            "example": "6a8f0bbc7b147839f36243f4"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateOrganisationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Organisation updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid organisation ID or request body",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Organisation not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Organisations"
+        ],
+        "summary": "Delete an organisation",
+        "description": "Soft-deletes an existing organisation.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organisationId",
+            "required": true,
+            "description": "MongoDB ID of the organisation",
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-fA-F0-9]{24}$"
+            },
+            "example": "6a8f0bbc7b147839f36243f4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Organisation deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid organisation ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Organisation not found"
+          }
+        }
+      }
+    },
     "/auth/register": {
       "post": {
         "tags": [

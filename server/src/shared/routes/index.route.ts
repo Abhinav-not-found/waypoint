@@ -10,6 +10,6 @@ indexRouter.use('/docs', docsRouter);
 indexRouter.use('/health', healthRoute);
 
 indexRouter.use('/auth', authRouter);
-indexRouter.use('/organisation', organisationRouter);
+indexRouter.use('/organisations', organisationRouter);
 
 export default indexRouter;
