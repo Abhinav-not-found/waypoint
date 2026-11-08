@@ -1,4 +1,4 @@
-import LogoutBtn from "@/shared/components/buttons/logout-btn"
+import AppAvatar from "@/shared/components/app-avatar"
 import { ModeToggle } from "@/shared/components/mode-toggle"
 import { SidebarTrigger, useSidebar } from "@/shared/components/ui/sidebar"
 
@@ -15,7 +15,7 @@ const MainNavbar = () => {
       </div>
       <div className="flex gap-2 items-center">
         <ModeToggle />
-        <LogoutBtn />
+        <AppAvatar />
       </div>
     </header>
   )
