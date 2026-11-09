@@ -56,13 +56,13 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Trigger Render deployment
-        env:
-          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
-        run: |
-          curl --fail --silent --show-error \
-            --request POST \
-            "$RENDER_DEPLOY_HOOK"
+      # - name: Trigger Render deployment
+      #   env:
+      #     RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+      #   run: |
+      #     curl --fail --silent --show-error \
+      #       --request POST \
+      #       "$RENDER_DEPLOY_HOOK"
             
   deploy-vps:
     name: Deploy to VPS
