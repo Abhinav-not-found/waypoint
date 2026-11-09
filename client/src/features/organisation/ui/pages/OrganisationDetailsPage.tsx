@@ -1,39 +1,39 @@
-import { useEffect, useState } from 'react';
+// import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import {
   Users,
-  Plus,
+  // Plus,
   Building2,
-  UsersRound,
-  ArrowUpRight,
+  // UsersRound,
+  // ArrowUpRight,
 } from 'lucide-react';
 
 import { Button } from '@/shared/components/ui/button';
-import { Input } from '@/shared/components/ui/input';
-import { Label } from '@/shared/components/ui/label';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/shared/components/ui/card';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/shared/components/ui/dialog';
+// import { Input } from '@/shared/components/ui/input';
+// import { Label } from '@/shared/components/ui/label';
+// import {
+//   Card,
+//   CardContent,
+//   CardDescription,
+//   CardHeader,
+//   CardTitle,
+// } from '@/shared/components/ui/card';
+// import {
+//   Dialog,
+//   DialogContent,
+//   DialogDescription,
+//   DialogHeader,
+//   DialogTitle,
+//   DialogTrigger,
+// } from '@/shared/components/ui/dialog';
 import GoBackBtn from '@/shared/components/buttons/go-back-btn';
 import useOrganisationDetails from '@/features/organisation/hooks/useOrganisationDetails.hook';
 
-type Team = {
-  id: string;
-  name: string;
-  description: string;
-};
+// type Team = {
+//   id: string;
+//   name: string;
+//   description: string;
+// };
 
 const OrganisationDetailsPage = () => {
   const { id } = useParams();
@@ -41,47 +41,47 @@ const OrganisationDetailsPage = () => {
 
   const {
     organisation,
-    isLoading,
+    // isLoading,
     isError,
     error,
   } = useOrganisationDetails(id ?? '');
 
 
-  const [teams, setTeams] = useState<Team[]>([]);
-  const [teamName, setTeamName] = useState('');
-  const [teamDescription, setTeamDescription] = useState('');
-  const [dialogOpen, setDialogOpen] = useState(false);
+  // const [teams, setTeams] = useState<Team[]>([]);
+  // const [teamName, setTeamName] = useState('');
+  // const [teamDescription, setTeamDescription] = useState('');
+  // const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleCreateTeam = () => {
-    if (!teamName.trim()) return;
+  // const handleCreateTeam = () => {
+  //   if (!teamName.trim()) return;
 
-    const newTeam: Team = {
-      id: crypto.randomUUID(),
-      name: teamName.trim(),
-      description: teamDescription.trim(),
-    };
+  //   const newTeam: Team = {
+  //     id: crypto.randomUUID(),
+  //     name: teamName.trim(),
+  //     description: teamDescription.trim(),
+  //   };
 
-    setTeams((prev) => [...prev, newTeam]);
+  //   setTeams((prev) => [...prev, newTeam]);
 
-    setTeamName('');
-    setTeamDescription('');
-    setDialogOpen(false);
-  };
+  //   setTeamName('');
+  //   setTeamDescription('');
+  //   setDialogOpen(false);
+  // };
 
-  const displayName = decodeURIComponent(
-    id ?? 'Organisation'
-  ).replace(/-/g, ' ');
+  // const displayName = decodeURIComponent(
+  //   id ?? 'Organisation'
+  // ).replace(/-/g, ' ');
 
-  if (isLoading) {
-    return (
-      <div className="flex min-h-[60vh] flex-col items-center justify-center gap-3">
-        <div className="size-8 animate-spin rounded-full border-4 border-muted border-t-primary" />
-        <p className="text-sm text-muted-foreground">
-          Loading organisation...
-        </p>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div className="flex min-h-[60vh] flex-col items-center justify-center gap-3">
+  //       <div className="size-8 animate-spin rounded-full border-4 border-muted border-t-primary" />
+  //       <p className="text-sm text-muted-foreground">
+  //         Loading organisation...
+  //       </p>
+  //     </div>
+  //   );
+  // }
 
   if (isError) {
     return (

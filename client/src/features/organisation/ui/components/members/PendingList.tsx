@@ -37,11 +37,12 @@ const pendingInvitations: Invitation[] = [
 
 const PendingList = () => {
 
-  const handleCancelInvitation = (email: string) => {
-    // setInvitations((prev) =>
-    //   prev.filter((invite) => invite.email !== email)
-    // );
-  };
+  // const handleCancelInvitation = (email: string) => {
+  //   // setInvitations((prev) =>
+  //   // console.log(email)
+  //   //   prev.filter((invite) => invite.email !== email)
+  //   // );
+  // };
   return (
     <Card>
       <CardHeader>
@@ -103,9 +104,9 @@ const PendingList = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={() =>
-                    handleCancelInvitation(invite.email)
-                  }
+                  // onClick={() =>
+                  //   handleCancelInvitation(invite.email)
+                  // }
                 >
                   <X className="size-4" />
                 </Button>

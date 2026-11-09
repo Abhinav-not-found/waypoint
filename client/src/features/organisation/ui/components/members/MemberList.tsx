@@ -11,7 +11,6 @@ import {
   CardTitle,
 } from '@/shared/components/ui/card';
 import { Badge } from '@/shared/components/ui/badge';
-import { Avatar, AvatarFallback } from '@/shared/components/ui/avatar';
 import EmptyState from '@/features/organisation/ui/components/EmptyState';
 import useInvitation from '@/features/organisation/hooks/useInvitation.hook';
 

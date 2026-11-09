@@ -1,7 +1,7 @@
 import GoBackBtn from '@/shared/components/buttons/go-back-btn';
 import InviteMemberCard from '@/features/organisation/ui/components/members/InviteMemberCard';
 import MemberList from '@/features/organisation/ui/components/members/MemberList';
-import PendingList from '@/features/organisation/ui/components/members/PendingList';
+// import PendingList from '@/features/organisation/ui/components/members/PendingList';
 import { useParams } from 'react-router';
 
 const OrganisationMembersPage = () => {
