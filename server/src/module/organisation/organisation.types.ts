@@ -1,5 +1,13 @@
 import type mongoose from 'mongoose';
 
+export type OrganisationRole = 'admin' | 'manager' | 'employee';
+
+export interface IOrganisationMember {
+  user: mongoose.Types.ObjectId;
+  role: OrganisationRole;
+  joinedAt: Date;
+}
+
 export interface IOrganisation {
   name: string;
   slug: string;
@@ -7,4 +15,5 @@ export interface IOrganisation {
   logo?: string | null;
   createdBy: mongoose.Types.ObjectId;
   isDeleted: boolean;
+  members: IOrganisationMember[];
 }

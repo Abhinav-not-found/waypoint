@@ -602,6 +602,92 @@
             "description": "Organisation not found"
           }
         }
+      },
+      "get": {
+        "tags": [
+          "Organisations"
+        ],
+        "summary": "Fetch an organisation",
+        "description": "Retrieves an organisation by its ID.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organisationId",
+            "required": true,
+            "description": "MongoDB ID of the organisation",
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-fA-F0-9]{24}$"
+            },
+            "example": "6a8f0bbc7b147839f36243f4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Organisation fetched successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganisationResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "404": {
+            "description": "Organisation not found"
+          }
+        }
+      }
+    },
+    "/invitation/organisations/{organisationId}/all": {
+      "get": {
+        "tags": [
+          "Invitations"
+        ],
+        "summary": "Fetch all organisation invitations",
+        "description": "Retrieves all invitations belonging to the specified organisation.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "organisationId",
+            "required": true,
+            "description": "MongoDB ID of the organisation.",
+            "schema": {
+              "type": "string",
+              "example": "673a1b2c3d4e5f6789012345"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invitations fetched successfully"
+          },
+          "400": {
+            "description": "Invalid organisation ID"
+          },
+          "401": {
+            "description": "Authentication required"
+          },
+          "403": {
+            "description": "Insufficient permissions to view invitations"
+          },
+          "404": {
+            "description": "Organisation not found"
+          }
+        }
       }
     },
     "/auth/register": {

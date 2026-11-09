@@ -23,6 +23,9 @@ const OrganisationList = ({
   onEdit,
   onDelete,
 }: OrganisationListProps) => {
+
+  // console.log(organisations)
+  
   if (isLoading) {
     return (
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

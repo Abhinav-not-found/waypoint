@@ -10,6 +10,7 @@ import {
 
 import { Button } from '@/shared/components/ui/button';
 import { MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
+import { Link } from 'react-router';
 
 interface OrganisationCardProps {
   organisation: Organisation;
@@ -34,9 +35,9 @@ const OrganisationCard = ({ organisation, onEdit, onDelete }: OrganisationCardPr
         </div>
 
         <div className="min-w-0 flex-1">
-          <h3 className="truncate font-semibold">
+          <Link to={`/home/${organisation._id}`} className="truncate font-semibold hover:underline underline-offset-2">
             {organisation.name}
-          </h3>
+          </Link>
 
           <p className="mt-1 text-sm text-muted-foreground">
             {organisation.description || 'No description provided'}

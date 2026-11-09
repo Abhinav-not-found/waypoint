@@ -112,4 +112,26 @@ export class OrganisationsService {
             },
         });
     }
+    /**
+     * Fetch an organisation
+     * Retrieves an organisation by its ID.
+     * @param organisationId MongoDB ID of the organisation
+     * @returns OrganisationResponse Organisation fetched successfully
+     * @throws ApiError
+     */
+    public static getOrganisations(
+        organisationId: string,
+    ): CancelablePromise<OrganisationResponse> {
+        return __request(OpenAPI, {
+            method: 'GET',
+            url: '/organisations/{organisationId}',
+            path: {
+                'organisationId': organisationId,
+            },
+            errors: {
+                401: `Authentication required`,
+                404: `Organisation not found`,
+            },
+        });
+    }
 }

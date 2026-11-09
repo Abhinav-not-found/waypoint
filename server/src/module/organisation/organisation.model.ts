@@ -42,6 +42,24 @@ const OrganisationSchema = new mongoose.Schema<IOrganisation>(
       type: Boolean,
       default: false,
     },
+    members: [
+      {
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'User',
+          required: true,
+        },
+        role: {
+          type: String,
+          enum: ['admin', 'manager', 'employee'],
+          default: 'employee',
+        },
+        joinedAt: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
   },
   {
     timestamps: true,

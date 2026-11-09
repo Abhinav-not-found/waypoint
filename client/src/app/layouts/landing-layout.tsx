@@ -3,7 +3,7 @@ import { Outlet } from "react-router"
 
 const LandingLayout = () => {
   return (
-    <div>
+    <div className="w-full">
       <Navbar />
       <Outlet />
     </div>

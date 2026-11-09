@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 
 const RegisterPage = () => {
   return (
-    <main className='flex flex-col items-center justify-center h-screen'>
+    <main className='flex flex-col items-center justify-center h-screen w-full'>
       <div className='w-sm'>
         <GoBackBtn />
         <RegisterForm />

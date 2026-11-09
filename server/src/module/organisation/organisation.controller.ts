@@ -53,6 +53,18 @@ class OrganisationController {
 
     return ApiResponse.ok('Deleted one organisation', deletedOrganisation).send(res);
   });
+
+  getOneOrganisations = AsyncHandler(async (req, res) => {
+    const { organisationId } = req.params;
+
+    if (typeof organisationId !== 'string') {
+      throw ApiError.badRequest('Invalid organisation ID');
+    }
+
+    const oneOrganisations = await organisationDao.fetchOneResources(organisationId);
+
+    return ApiResponse.ok('Fetched one organisation', oneOrganisations).send(res);
+  });
 }
 
 export default OrganisationController;

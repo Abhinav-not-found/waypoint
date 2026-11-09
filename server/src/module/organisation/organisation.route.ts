@@ -194,4 +194,37 @@ organisationRouter.delete(
   organisationController.deleteOneOrganisation,
 );
 
+/**
+ * @openapi
+ * /organisations/{organisationId}:
+ *   get:
+ *     tags:
+ *       - Organisations
+ *     summary: Fetch an organisation
+ *     description: Retrieves an organisation by its ID.
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: organisationId
+ *         required: true
+ *         description: MongoDB ID of the organisation
+ *         schema:
+ *           type: string
+ *           pattern: '^[a-fA-F0-9]{24}$'
+ *         example: '6a8f0bbc7b147839f36243f4'
+ *     responses:
+ *       200:
+ *         description: Organisation fetched successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/OrganisationResponse'
+ *       401:
+ *         description: Authentication required
+ *       404:
+ *         description: Organisation not found
+ */
+organisationRouter.get('/:organisationId', requireAuth, organisationController.getOneOrganisations);
+
 export default organisationRouter;

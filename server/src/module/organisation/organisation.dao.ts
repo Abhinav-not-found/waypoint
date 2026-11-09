@@ -37,5 +37,9 @@ class OrganisationDao {
 
     return resource;
   };
+
+  fetchOneResources = (id: string) => {
+    return Organisation.findOne({ _id: id, isDeleted: false });
+  };
 }
 export default OrganisationDao;
