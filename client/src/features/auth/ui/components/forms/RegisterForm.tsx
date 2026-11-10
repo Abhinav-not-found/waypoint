@@ -7,12 +7,19 @@ import {
   FieldLegend,
   FieldSet,
 } from "@/shared/components/ui/field"
+
 import { Input } from "@/shared/components/ui/input"
 import { Button } from "@/shared/components/ui/button"
+
 import useRegister from "@/features/auth/hooks/useRegister.hook"
+
+import PasswordField from "../PasswordField"
+import PasswordStrengthIndicator from "../PasswordStrengthIndicator"
 
 const RegisterForm = () => {
   const { form, registerMutation, onSubmit } = useRegister()
+
+  const password = form.watch("password") || ""
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -33,7 +40,11 @@ const RegisterForm = () => {
               id="name"
               placeholder="John Doe"
               autoComplete="name"
-              className={form.formState.errors.name && "focus-visible:ring-red-200 dark:focus-visible:ring-red-500/50 border-red-500 focus-visible:border-red-500"}
+              className={
+                form.formState.errors.name
+                  ? "border-red-500 focus-visible:border-red-500"
+                  : ""
+              }
               {...form.register("name")}
             />
 
@@ -51,7 +62,11 @@ const RegisterForm = () => {
               type="email"
               placeholder="john@example.com"
               autoComplete="email"
-              className={form.formState.errors.email && "focus-visible:ring-red-200 dark:focus-visible:ring-red-500/50 border-red-500 focus-visible:border-red-500"}
+              className={
+                form.formState.errors.email
+                  ? "border-red-500 focus-visible:border-red-500"
+                  : ""
+              }
               {...form.register("email")}
             />
 
@@ -61,22 +76,14 @@ const RegisterForm = () => {
           </Field>
 
           {/* Password */}
-          <Field>
-            <FieldLabel htmlFor="password">Password</FieldLabel>
-
-            <Input
-              id="password"
-              type="password"
-              placeholder="Create a strong password"
-              autoComplete="new-password"
-              className={form.formState.errors.password && "focus-visible:ring-red-200 dark:focus-visible:ring-red-500/50 border-red-500  focus-visible:border-red-500"}
-              {...form.register("password")}
+          <div className="space-y-2">
+            <PasswordField
+              registration={form.register("password")}
+              error={form.formState.errors.password?.message}
             />
 
-            <FieldError className="text-xs">
-              {form.formState.errors.password?.message}
-            </FieldError>
-          </Field>
+            <PasswordStrengthIndicator password={password} />
+          </div>
 
           {/* Server error */}
           {form.formState.errors.root && (

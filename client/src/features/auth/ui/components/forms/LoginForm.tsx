@@ -10,6 +10,7 @@ import {
 import { Input } from "@/shared/components/ui/input"
 import { Button } from "@/shared/components/ui/button"
 import useLogin from "@/features/auth/hooks/useLogin.hook"
+import PasswordField from "@/features/auth/ui/components/PasswordField"
 
 const LoginForm = () => {
 
@@ -46,22 +47,10 @@ const LoginForm = () => {
           </Field>
 
           {/* Password */}
-          <Field>
-            <FieldLabel htmlFor="password">Password</FieldLabel>
-
-            <Input
-              id="password"
-              type="password"
-              placeholder="Enter your password"
-              autoComplete="current-password"
-              className={form.formState.errors.password && "focus-visible:ring-red-200 dark:focus-visible:ring-red-500/50 border-red-500  focus-visible:border-red-500"}
-              {...form.register("password")}
-            />
-
-            <FieldError className="text-xs">
-              {form.formState.errors.password?.message}
-            </FieldError>
-          </Field>
+          <PasswordField
+            registration={form.register("password")}
+            error={form.formState.errors.password?.message}
+          />
 
           {/* Server error */}
           {form.formState.errors.root && (
