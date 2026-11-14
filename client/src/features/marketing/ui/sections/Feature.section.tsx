@@ -52,7 +52,7 @@ const FeaturesSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <div
               key={feature.title}
               className={`border rounded-xl p-7 min-h-52 flex flex-col justify-between hover:bg-muted/40 transition-colors ${feature.className ?? ""}`}

@@ -15,7 +15,7 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarHeader>
         <div className="m-2 flex items-center justify-between">
-          <Logo size="sm" />
+          <Logo />
           <SidebarTrigger />
         </div>
       </SidebarHeader>
