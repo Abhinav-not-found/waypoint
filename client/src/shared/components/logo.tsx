@@ -1,15 +1,15 @@
-import { cn } from "cn"
 import { Link } from "react-router"
 
-type sizes = 'sm' | 'default'
-
-const Logo = ({ size }: { size?: sizes }) => {
+const Logo = () => {
   return (
-    <Link to={'/'} className="active:scale-97">
-      <p className={cn(
-        size === "default" && "text-lg tracking-tighter font-medium",
-        size === "sm" && "text-lg tracking-tighter font-medium"
-      )}>Waypoint</p>
+    <Link to="/" className="flex items-center gap-1.5 font-bold text-lg active:scale-98">
+      <div className="size-7 rounded-md bg-foreground text-background flex items-center justify-center text-sm">
+        W
+      </div>
+      <span className="tracking-tighter">
+        Waypoint
+      </span>
+
     </Link>
 
   )
