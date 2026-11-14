@@ -13,7 +13,7 @@ class OrganisationController {
 
     const newOrganisation = await organisationDao.createNewResource({ ...data, createdBy: userId });
 
-    return ApiResponse.ok('New organisation created', newOrganisation).send(res);
+    return ApiResponse.created('New organisation created', newOrganisation).send(res);
   });
 
   getAllOrganisations = AsyncHandler(async (req, res) => {

@@ -4,11 +4,8 @@ node_modules/
 server/dist/
 server/public/
 
-.env
-.env.*
-**/.env
-**/.env.*
 
 .DS_Store
 
 PROJECT.md
+config.bat
